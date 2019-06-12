@@ -35,7 +35,7 @@ end
 5.times do
   Post.create!(
     user_id: 1,
-    content: Faker::Lorem.sentences
+    content: Faker::Lorem.paragraph
   )
 end
 
@@ -43,7 +43,7 @@ end
   Comment.create!(
     post_id: 1,
     user_id: n + 1,
-    content: Faker::Lorem.sentences
+    content: Faker::Lorem.paragraph
   )
 end
 
