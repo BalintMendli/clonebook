@@ -12,14 +12,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def confirmed_friends
-    self.sent_requests_friends.where(accepted: true) + self.received_requests_friends.where(accepted: true)
+    self.sent_requests_friends.where("accepted = ?", true) + self.received_requests_friends.where("accepted = ?", true)
   end
 
   def unconfirmed_sent_requests_friends
-    self.sent_requests_friends.where(accepted: false)
+    self.sent_requests_friends.where("accepted = ?", false)
   end
 
   def unconfirmed_received_requests_friends
-    self.received_requests_friends.where(accepted: false)
+    self.received_requests_friends.where("accepted = ?", false)
   end
 end
