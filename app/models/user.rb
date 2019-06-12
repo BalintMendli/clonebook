@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :posts
-  has_many :comments
-  has_many :likes
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :sent_friend_requests, :class_name => 'FriendRequest', :foreign_key => 'sender_id'
   has_many :received_friend_requests, :class_name => 'FriendRequest', :foreign_key => 'receiver_id'
   has_many :sent_requests_friends, through: :sent_friend_requests, :source => :receiver
