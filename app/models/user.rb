@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def friends_posts
     Post.where(user_id: friends.ids)
   end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

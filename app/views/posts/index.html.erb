@@ -1,0 +1,9 @@
+<% @posts.each do |p| %>
+  <p><%= p.content %></p>
+  <p><%= p.user.name %></p>
+  <p><%= p.likes.count %></p>
+  <% p.comments.each do |c| %>
+    <p><%= c.content %></p>
+    <p><%= c.user %></p>
+  <% end %>
+<% end %>
