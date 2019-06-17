@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'timeline', to: 'posts#index'
   resource :posts, only: [:new, :create, :destroy]
   resource :likes, only: [:create, :destroy]
+  resource :comments, only: [:new, :create, :destroy]
 end
