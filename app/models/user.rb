@@ -15,11 +15,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def sent_requests_users
-    self.friend_requests.where(accepted: false, sender_id: self.id)
+    requests = self.friend_requests.where(accepted: false, sender_id: self.id).ids
+    User.where(id: requests)
   end
 
   def received_requests_users
-    self.friend_requests.where(accepted: false, receiver_id: self.id)
+    requests = self.friend_requests.where(accepted: false, receiver_id: self.id)
+    User.where(id: requests)
   end
 
   def friends
