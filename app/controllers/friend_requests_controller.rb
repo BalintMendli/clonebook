@@ -31,4 +31,8 @@ class FriendRequestsController < ApplicationController
   def index
     @requests = current_user.received_requests_users
   end
+
+  def friends
+    @friends = current_user.friends
+  end
 end
