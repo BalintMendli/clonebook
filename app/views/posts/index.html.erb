@@ -1,9 +1,11 @@
 <% @posts.each do |p| %>
   <p><%= p.content %></p>
+  <%= gravatar_for p.user, size: 30 %>
   <p><%= p.user.name %></p>
-  <p><%= p.likes.count %> Likes</p>
+  <p><%= pluralize(p.likes.count, 'Likes') %></p>
   <% p.comments.each do |c| %>
     <p><%= c.content %></p>
+    <%= gravatar_for c.user, size: 30 %>
     <p><%= c.user.name %></p>
   <% end %>
 <% end %>

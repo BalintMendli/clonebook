@@ -1,1 +1,16 @@
+<%= gravatar_for @user, size: 160 %>
 <p><%= @user.name%></p>
+<p><%= @user.email%></p>
+<p><%= @user.birthday%></p>
+<p><%= @user.gender%></p>
+<h2>Posts</h2>
+<% @user.posts.each do |p| %>
+  <p><%= p.content %></p>
+  <p><%= pluralize(p.likes.count, 'Likes') %></p>
+  <h3>Comments</h3>
+  <% p.comments.each do |c| %>
+    <p><%= c.content %></p>
+    <%= gravatar_for c.user, size: 30 %>
+    <p><%= c.user.name %></p>
+  <% end %>
+<% end %>
