@@ -3,13 +3,13 @@ class FriendRequestsController < ApplicationController
   end
 
   def create
-    friend_request = current_user.friend_requests.build(params[:friend_id])
+    friend_request = FriendRequest.new(sender_id: current_user.id, receiver_id: params[:id])
     if friend_request.save
       flash[:success] = 'Friend request sent!'
     else
       flash[:danger] = 'Something went wrong...'
     end
-    redirect_back(fallback_location: profile_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def edit
@@ -17,15 +17,19 @@ class FriendRequestsController < ApplicationController
 
   def update
     friend_request = FriendRequest.find_by(sender_id: params[:id], receiver_id: current_user.id)
-    friend_request.update_attributes(accepted: true)
-    redirect_back(fallback_location: profile_path)
+    if friend_request.update_attributes(accepted: true)
+      flash[:success] = 'Friend request accepted!'
+    else
+      flash[:danger] = 'Something went wrong...'
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     friend_request = FriendRequest.find_by(sender_id: params[:id], receiver_id: current_user.id) || 
     FriendRequest.find_by(sender_id: current_user.id, receiver_id: params[:id])
     friend_request.destroy
-    redirect_back(fallback_location: profile_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def index

@@ -14,13 +14,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def sent_requests_users
-    requests = self.friend_requests.where(accepted: false, sender_id: self.id).ids
+    requests = self.friend_requests.where(accepted: false, sender_id: self.id).pluck(:receiver_id)
     User.where(id: requests)
   end
 
   def received_requests_users
-    requests = self.friend_requests.where(accepted: false, receiver_id: self.id)
+    requests = self.friend_requests.where(accepted: false, receiver_id: self.id).pluck(:sender_id)
     User.where(id: requests)
   end
 
@@ -34,7 +38,15 @@ class User < ApplicationRecord
     Post.where(user_id: friends.ids)
   end
 
-  def name
-    "#{first_name} #{last_name}"
+  def friend_request_from?(user)
+    received_requests_users.include?(user)
+  end
+
+  def friend_request_to?(user)
+    sent_requests_users.include?(user)
+  end
+
+  def friends_with?(user)
+    friends.include?(user)
   end
 end

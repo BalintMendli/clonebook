@@ -1,3 +1,6 @@
 <% @friends.each do |f| %>
-  <p><%= f.name %></p>
+  <p>
+    <%= link_to f.name, profile_path(f) %>
+    <%= link_to 'Delete friend', friend_request_path(f), method: :delete %>
+  </p>
 <% end %>
