@@ -32,11 +32,17 @@ end
   )
 end
 
-5.times do
-  Post.create!(
+5.times do |n|
+  p = Post.create!(
     user_id: 1,
-    content: Faker::Lorem.paragraph
+    content: Faker::Lorem.paragraph(8)
   )
+  p.update_attribute :created_at, (rand*10).days.ago
+  p = Post.create!(
+    user_id: n + 5,
+    content: Faker::Lorem.paragraph(8)
+  )
+  p.update_attribute :created_at, (rand*10).days.ago
 end
 
 5.times do |n|

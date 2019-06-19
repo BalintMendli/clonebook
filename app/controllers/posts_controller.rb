@@ -1,27 +1,29 @@
 class PostsController < ApplicationController
   def new
-    @post = current_user.posts.new
   end
 
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = 'Post created'
-      redirect_to profile_path
+      flash[:success] = 'Post saved!'
     elsif
-      render :new
+      flash[:danger] = 'Something went wrong...'
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def index
-    @posts = current_user.friends_posts + current_user.posts
+    @posts = current_user.friends_and_own_posts
   end
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    flash[:alert] = 'Post created'
-    redirect_to profile_path
+    if post.destroy
+      flash[:alert] = 'Post deleted!'
+    else
+      flash[:danger] = 'Something went wrong...'
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

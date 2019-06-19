@@ -35,8 +35,8 @@ class User < ApplicationRecord
     User.where(id: friends_ids)
   end
 
-  def friends_posts
-    Post.where(user_id: friends.ids)
+  def friends_and_own_posts
+    Post.where(user_id: friends.ids).or(Post.where(user_id: self.id)).order(created_at: :desc)
   end
 
   def friend_request_from?(user)
@@ -49,6 +49,10 @@ class User < ApplicationRecord
 
   def friends_with?(user)
     friends.include?(user)
+  end
+
+  def liked(post)
+    Like.find_by(user_id: self.id, post_id: post.id)
   end
 
   def self.from_omniauth(auth)

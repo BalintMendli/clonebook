@@ -28,7 +28,13 @@ class FriendRequestsController < ApplicationController
   def destroy
     friend_request = FriendRequest.find_by(sender_id: params[:id], receiver_id: current_user.id) || 
     FriendRequest.find_by(sender_id: current_user.id, receiver_id: params[:id])
-    friend_request.destroy
+    accepted = friend_request.accepted
+    if friend_request.destroy
+      flash[:success] = 'Friend deleted!' if accepted
+      flash[:success] = 'Friend request deleted!' if !accepted
+    else
+      flash[:danger] = 'Something went wrong...'
+    end
     redirect_back(fallback_location: root_path)
   end
 
