@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <li>
+    <%= link_to 'Timeline', root_path %>
+  </li>
+  <li>
+    <%= link_to 'Users', users_path %>
+  </li>
+  <li>
+    <%= link_to pluralize(current_user.friends.count, 'Friends'), friends_path %>
+  </li>
+  <li>
+    <%= link_to pluralize(current_user.received_requests_users.count, 'Friend Request'), friend_requests_path %>
+  </li>
+  <li>
+    <%= link_to 'Profile', profile_path(current_user) %>
+  </li>
+  <li>
+    <%= link_to 'Settings', edit_user_registration_path %>
+  </li>
+  <li>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to 'Login', new_user_session_path %>
+  </li>
+<% end %>

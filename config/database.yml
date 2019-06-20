@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
   username: postgres
   password: postgres
   # For details on connection pooling, see rails configuration guide
@@ -30,3 +31,7 @@ development:
 test:
   <<: *default
   database: clonebook_test
+
+production:
+ database: clonebook
+ <<: *default
