@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validate :must_at_least_13
+  validate :must_be_at_least_13
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -75,7 +75,7 @@ class User < ApplicationRecord
 
   private
 
-    def must_at_least_13
+    def must_be_at_least_13
       return if birthday.blank?
       if birthday > 13.years.ago
         errors.add(:base, "Must be at least 13 years old") 

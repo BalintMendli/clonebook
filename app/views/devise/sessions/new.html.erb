@@ -1,26 +1,28 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="left">
+  <h2 class="title">
+    Connect with friends and the<br>
+    world around you on Clonebook.
+  </h2>
+  <div class="line">
+    <%= image_tag "main1.png", class:"img" %>
+    <div class="text">
+      <span>See photos and updates</span> from friends in News Feed.
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <div class="line">
+    <%= image_tag "main2.png", class:"img" %>
+    <div class="text">
+      <span>Share what's new</span> in your life on your Timeline.
+    </div>
+  </div>
+  <div class="line">
+    <%= image_tag "main3.png", class:"img" %>
+    <div class="text">
+      <span>Find more</span> of what you're looking for with Facebook Search.
+    </div>
+  </div>
+</div>
+<div class="right">
+  <%= render 'devise/registrations/new' %>
+</div>
 
-<%= render "devise/shared/links" %>
