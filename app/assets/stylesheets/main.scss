@@ -25,6 +25,10 @@ a:hover {
   text-decoration: underline;
 }
 
+input {
+  outline: none;
+}
+
 .header {
   height: 82px;
   color: #fff;
@@ -33,6 +37,11 @@ a:hover {
   border-bottom: 1px solid #133783;
   min-height: 42px;
   margin-bottom: 20px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 
   .header-container {
     width: 980px;
@@ -255,4 +264,22 @@ h2 {
     font-size: 11px;
     color: #737373;
   }
+}
+
+.alert {
+  width: 980px;
+  margin: 0 auto;
+  padding: 15px 30px;
+  border: 1px solid #bdc7d8;
+  margin-bottom: 20px;
+  color: #fff;
+  background: #007bff;
+}
+
+.alert-success {
+  background: #28a745;
+}
+
+.alert-danger {
+  background: #dc3545;
 }
