@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
-  background: #edf0f5;
+  background-color: #e9ebee;
 }
 
 body {
@@ -12,7 +13,9 @@ body {
   min-height: 100vh;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -44,7 +47,7 @@ input {
     margin: 0 auto;
     height: 100%;
     padding: 8px 0;
-    
+
     ul {
       display: flex;
       align-items: center;
@@ -58,7 +61,7 @@ input {
         display: flex;
         align-items: center;
 
-        &:not(.icon):not(.profile-link) {
+        &:not(.icon):not(.profile-link):not(.brand-item):not(.sign-in-form) {
           padding-left: 12px;
           margin-left: 12px;
           border-left: 1px solid #2d4372;
@@ -84,7 +87,7 @@ input {
         align-items: center;
 
         a {
-          font-family: 'Lato';
+          font-family: "Lato";
           font-weight: bold;
           padding: 3px 5px 0 7px;
           color: #3b5998;
@@ -95,7 +98,7 @@ input {
       }
 
       .brand {
-        font-family: 'Lato';
+        font-family: "Lato";
         font-size: 2.2rem;
         font-weight: bold;
       }
@@ -175,7 +178,8 @@ h2 {
       margin-top: 14px;
       padding-bottom: 10px;
 
-      .img, .text {
+      .img,
+      .text {
         display: inline-block;
         vertical-align: middle;
       }
@@ -230,7 +234,7 @@ h2 {
           width: 194px;
         }
 
-        input+input {
+        input + input {
           margin-left: 8px;
         }
       }
@@ -250,7 +254,7 @@ h2 {
         color: #1d2129;
       }
 
-      .action{
+      .action {
         input {
           font-size: 19px;
           font-family: Lato;
@@ -270,7 +274,7 @@ h2 {
           color: #fff;
           cursor: pointer;
           display: inline-block;
-          text-shadow: 0 1px 2px rgba(0,0,0,.5);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 
           &:hover {
             background: linear-gradient(#79bc64, #578843);
@@ -316,4 +320,74 @@ h2 {
 
 .alert-danger {
   background: #dc3545;
+}
+
+.post-container {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post-box {
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  background: #fff;
+
+  .create-post-label {
+    background-color: #f5f6f7;
+    border-bottom: 1px solid #dddfe2;
+    border-radius: 2px 2px 0 0;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
+    color: #4b4f56;
+    width: 100%;
+    padding: 8px;
+  }
+
+  textarea {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 18px;
+    outline: none;
+    padding: 13px 12px;
+    resize: none;
+    word-wrap: break-word;
+    width: 100%;
+    border: none;
+    min-height: 71px;
+    height: 100%;
+
+    &:focus {
+      min-height: 120px;
+    }
+  }
+
+  .action {
+    border-top: 1px solid #e9ebee;
+    margin: 0 12px;
+    padding: 8px 0;
+
+    input {
+      font-size: 12px;
+      line-height: 22px;
+      padding: 0 16px;
+      height: 28px;
+      width: 100%;
+      cursor: pointer;
+      display: inline-block;
+      background-color: #4267b2;
+      color: #fff;
+      border: 1px solid #4267b2;
+      border-radius: 2px;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #365899;
+        border-color: #365899;
+      }
+    }
+  }
 }

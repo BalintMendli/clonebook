@@ -28,10 +28,10 @@
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
-      <li>
+      <li class="brand-item">
         <%= link_to 'Clonebook', root_path, class: "brand" %>
       </li>
-      <li>
+      <li class="sign-in-form">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email %>
