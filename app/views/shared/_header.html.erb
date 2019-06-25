@@ -2,20 +2,24 @@
   <div class="header-container">
     <ul>
     <% if user_signed_in? %>
-      <li>
-        <%= link_to 'Timeline', root_path %>
+      <li class="icon">
+        <%= link_to 'C', root_path %>
+      </li>
+      <li class="profile-link">
+        <%= gravatar_for current_user, size: 24 %>
+        <%= link_to current_user.first_name, profile_path(current_user) %>
       </li>
       <li>
-        <%= link_to 'Users', users_path %>
+        <%= link_to 'Home', root_path %>
       </li>
       <li>
-        <%= link_to pluralize(current_user.friends.count, 'Friends'), friends_path %>
+        <%= link_to 'Find Friends', users_path %>
       </li>
       <li>
-        <%= link_to pluralize(current_user.received_requests_users.count, 'Friend Request'), friend_requests_path %>
+        <%= link_to "Friend Requests(#{current_user.received_requests_users.count})", friend_requests_path %>
       </li>
       <li>
-        <%= link_to 'Profile', profile_path(current_user) %>
+        <%= link_to "Friends(#{current_user.friends.count})", friends_path %>
       </li>
       <li>
         <%= link_to 'Settings', edit_user_registration_path %>

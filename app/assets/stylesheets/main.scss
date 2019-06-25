@@ -30,23 +30,20 @@ input {
 }
 
 .header {
-  height: 82px;
   color: #fff;
   background-color: #3b5998;
   background-image: linear-gradient(#4e69a2, #3b5998 50%);
   border-bottom: 1px solid #133783;
   min-height: 42px;
   margin-bottom: 20px;
-
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
+  display: flex;
+  align-items: center;
 
   .header-container {
     width: 980px;
     margin: 0 auto;
     height: 100%;
+    padding: 8px 0;
     
     ul {
       display: flex;
@@ -58,6 +55,43 @@ input {
 
       li {
         list-style: none;
+        display: flex;
+        align-items: center;
+
+        &:not(.icon):not(.profile-link) {
+          padding-left: 12px;
+          margin-left: 12px;
+          border-left: 1px solid #2d4372;
+        }
+
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 12px;
+        }
+
+        .gravatar {
+          margin-right: 8px;
+          border-radius: 50%;
+        }
+      }
+
+      .icon {
+        margin-right: auto;
+        margin-left: 0;
+        display: flex;
+        align-items: center;
+
+        a {
+          font-family: 'Lato';
+          font-weight: bold;
+          padding: 3px 5px 0 7px;
+          color: #3b5998;
+          background: #fff;
+          border-radius: 3px;
+          font-size: 18px;
+        }
       }
 
       .brand {
