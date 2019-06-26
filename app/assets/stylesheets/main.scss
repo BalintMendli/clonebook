@@ -643,3 +643,82 @@ h2 {
     }
   }
 }
+
+.profile-container {
+  width: 850px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+
+  .about {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+
+    .profile {
+      border: 1px solid #dddfe2;
+      border-radius: 3px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        padding-left: 15px;
+      }
+
+      .gravatar {
+        margin: 20px auto 20px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .info {
+      border: 1px solid #dddfe2;
+      border-radius: 3px;
+      background: #fff;
+      margin-top: 20px;
+
+      .title {
+        border-bottom: 1px solid #e9e9e9;
+        padding: 15px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #1c1e21;
+      }
+
+      .data {
+        margin: 0 12px;
+        font-size: 14px;
+        color: #90949c;
+
+        .data-row {
+          display: flex;
+          padding: 12px 0;
+
+          .prop {
+            flex: 1;
+          }
+
+          .value {
+            flex: 2;
+            color: #1c1e21;
+          }
+        }
+
+        .data-row + .data-row {
+          border-top: 1px solid #e9e9e9;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+
+  .posts {
+    flex: 1.6;
+    display: flex;
+    flex-direction: column;
+  }
+}
