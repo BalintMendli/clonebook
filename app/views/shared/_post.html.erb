@@ -33,14 +33,9 @@
       <%= link_to "Comment", {anchor: "#{p.id}-comment"}, class: "comment" %>
   </div>
 </div>
+<div class="comment-box">
   <% p.comments.each do |c| %>
-    <p>
-      Comment: <%= c.content %>
-      <% if c.user_id == current_user.id || p.user_id === current_user %>
-        <%= link_to 'Delete comment', comment_path(id: c.id), method: :delete %>
-      <% end %>
-    </p>
-    <%= gravatar_for c.user, size: 30 %>
-    <p><%= c.user.name %></p>
+    <%= render "shared/comment", c: c, p: p %>
   <% end %>
   <%= render "comments/new", post_id: p.id %>
+</div>

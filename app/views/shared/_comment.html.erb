@@ -1,0 +1,12 @@
+<div class="comment-row">
+  <%= gravatar_for p.user, size: 32 %>
+  <div class="comment-content">
+    <%= link_to p.user.name, profile_path(p.user) %>
+    <%= c.content %>
+  </div>
+  <div class="delete">
+    <% if c.user_id == current_user.id || p.user_id === current_user %>
+      <%= link_to 'Delete comment', comment_path(id: c.id), method: :delete %>
+    <% end %>
+  </div>
+</div>

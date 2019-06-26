@@ -1,10 +1,9 @@
 <%= form_for :comment, url: comments_path do |f| %>
   <div class="field" id=<%= "#{post_id}-comment" %> >
-    <%= f.label :content, "New comment:" %><br />
-    <%= f.text_area :content, rows: 4 %>
+    <%= f.text_area :content, placeholder: "Write a comment..." %>
     <%= f.hidden_field :post_id, value: post_id %>
   </div>
   <div class="action">
-    <%= f.submit "Submit Comment" %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>
