@@ -1,16 +1,8 @@
-<h2>Users</h2>
-<% @users.each do |u| %>
-  <p>
-    <%= link_to u.name, profile_path(u.id) %>
-    <% if current_user.friend_request_from?(u) %>
-      <%= link_to 'Accept', friend_request_path(u), method: :patch %> 
-      <%= link_to 'Reject', friend_request_path(u), method: :delete %>
-    <% elsif current_user.friend_request_to?(u) %>
-      <%= link_to 'Revoke request', friend_request_path(u), method: :delete %>
-    <% elsif current_user.friends_with?(u) %>
-      <%= link_to 'Delete friend', friend_request_path(u), method: :delete %>
-    <% elsif current_user!=u %>
-      <%= link_to 'Send friend request', friend_requests_path(id: u.id), method: :post %>
+<div class="users-container">
+  <div class="title">Users</div>
+  <div class="users">
+    <% @users.each do |u| %>
+      <%= render 'shared/user', u: u %>
     <% end %>
-  </p>
-<% end %>
+  </div>
+</div>

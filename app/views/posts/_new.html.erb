@@ -2,7 +2,7 @@
   <%= form_for :post, url: posts_path do |f| %>
     <%= f.label :content, 'Create post', class: 'create-post-label' %><br />
     <div class="field">
-      <%= f.text_area :content, placeholder: "What's on your mind, #{current_user.first_name}?" %>
+      <%= f.text_area :content, placeholder: "What's on your mind, #{current_user.first_name}?", required: true %>
     </div>
     <div class="action">
       <%= f.submit "Share" %>
