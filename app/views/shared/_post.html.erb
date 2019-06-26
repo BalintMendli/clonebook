@@ -1,0 +1,46 @@
+<div class="post-box">
+  <div class="info">
+    <div class="img">
+      <%= gravatar_for p.user, size: 40 %>
+    </div>
+    <div class="right">
+      <%= link_to p.user.name, profile_path(p.user) %>
+      <div class="created"><%= time_ago_in_words(p.created_at) %></div>
+    </div>
+    <div class="delete">
+      <% if p.user_id == current_user.id %>
+        <%= link_to 'Delete post', post_path(id: p.id), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <div class="content">
+    <%= p.content %>
+  </div>
+  <div class="likes-comments">
+    <div class="likes">
+      <%= pluralize(p.likes.count, 'Likes') %> 
+    </div>
+    <div class="comments">
+      <%= pluralize(p.comments.count, 'Comments') %> 
+    </div>
+  </div>
+  <div class="like-comment">
+      <% if current_user.liked(p) %>
+        <%= link_to 'Unlike', like_path(id: current_user.liked(p).id), method: :delete, class: "like" %></p>
+      <% else %>
+        <%= link_to 'Like', likes_path(id: p.id), method: :post, class: "like" %></p>
+      <% end %>
+      <%= link_to "Comment", {anchor: "#{p.id}-comment"}, class: "comment" %>
+  </div>
+</div>
+  <% p.comments.each do |c| %>
+    <p>
+      Comment: <%= c.content %>
+      <% if c.user_id == current_user.id || p.user_id === current_user %>
+        <%= link_to 'Delete comment', comment_path(id: c.id), method: :delete %>
+      <% end %>
+    </p>
+    <%= gravatar_for c.user, size: 30 %>
+    <p><%= c.user.name %></p>
+  <% end %>
+  <%= render "comments/new", post_id: p.id %>
