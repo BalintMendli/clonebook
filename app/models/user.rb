@@ -60,8 +60,15 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.first_name = auth.info.name
-      user.last_name = auth.info.name
+      name = auth.info.name.strip
+      i = name.index(' ')
+      if i
+        user.first_name = name[0...i]
+        user.last_name = name[i+1..-1]
+      else
+        user.first_name = name
+        user.last_name = name
+      end
     end
   end
 

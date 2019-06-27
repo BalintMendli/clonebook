@@ -4,9 +4,11 @@
     <%= link_to p.user.name, profile_path(p.user) %>
     <%= c.content %>
   </div>
-  <div class="delete">
-    <% if c.user_id == current_user.id || p.user_id === current_user %>
-      <%= link_to 'Delete comment', comment_path(id: c.id), method: :delete %>
-    <% end %>
-  </div>
+  <%= link_to comment_path(id: c.id), method: :delete do %>
+    <div class="delete" data-title="Delete comment" >
+      <% if c.user_id == current_user.id || p.user_id === current_user.id %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -436,9 +436,13 @@ h2 {
       border-radius: 50%;
     }
 
-    .delete {
-      font-size: 12px;
+    a {
       align-self: flex-start;
+    }
+
+    .delete {
+      margin: 5px;
+      font-size: 1.05em;
     }
   }
 
@@ -470,6 +474,11 @@ h2 {
     a {
       color: #606770;
       text-decoration: none;
+
+      i {
+        margin-right: 5px;
+        font-size: 1.2em;
+      }
     }
 
     .like {
@@ -477,7 +486,7 @@ h2 {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 3px 7px;
+      padding: 5px;
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.05);
@@ -490,7 +499,7 @@ h2 {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 3px 7px;
+      padding: 5px;
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.05);
@@ -519,7 +528,7 @@ h2 {
     }
 
     .delete {
-      margin-left: auto;
+      margin-left: 6px;
     }
 
     .comment-content {
@@ -679,7 +688,7 @@ h2 {
       flex-direction: column;
 
       .name {
-        padding-left: 15px;
+        padding-left: 20px;
       }
 
       .gravatar {
@@ -736,4 +745,33 @@ h2 {
     display: flex;
     flex-direction: column;
   }
+}
+
+[data-title] {
+  position: relative;
+}
+
+[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  bottom: -26px;
+  left: -5px;
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 2px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-family: sans-serif;
+  white-space: nowrap;
+}
+[data-title]:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -2px;
+  display: inline-block;
+  color: #fff;
+  border: 8px solid transparent;
+  border-bottom: 8px solid #000;
 }
