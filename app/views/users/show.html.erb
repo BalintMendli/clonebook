@@ -19,9 +19,11 @@
           <div class="prop">Gender:</div>
           <div class="value"><%= @user.gender%></div>
         </div>
-        <div class="data-row">
-          <%= link_to "Friends (#{current_user.friends.count})", friends_path %>
-        </div>
+        <% if @user==current_user %>
+          <div class="data-row">
+            <%= link_to "Friends (#{current_user.friends.count})", friends_path %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

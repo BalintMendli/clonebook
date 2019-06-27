@@ -1,7 +1,8 @@
-<% @requests.each do |r| %>
-  <p>
-    <%= link_to r.name, profile_path(r) %>
-    <%= link_to 'Accept', friend_request_path(r), method: :patch %> 
-    <%= link_to 'Reject', friend_request_path(r), method: :delete %>
-  </p>
-<% end %>
+<div class="users-container">
+  <div class="title">Friend Requests</div>
+  <div class="users">
+    <% @requests.each do |r| %>
+      <%= render 'shared/user', u: r %>
+    <% end %>
+  </div>
+</div>
