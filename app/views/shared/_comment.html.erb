@@ -1,7 +1,7 @@
 <div class="comment-row">
-  <%= gravatar_for p.user, size: 32 %>
+  <%= gravatar_for c.user, size: 32 %>
   <div class="comment-content">
-    <%= link_to p.user.name, profile_path(p.user) %>
+    <%= link_to c.user.name, profile_path(c.user) %>
     <%= c.content %>
   </div>
   <%= link_to comment_path(id: c.id), method: :delete do %>

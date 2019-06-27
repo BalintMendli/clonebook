@@ -3,4 +3,5 @@
   <% @posts.each do |p| %>
     <%= render "shared/post", p: p %>
   <% end %>
+  <%= render 'shared/post', p: nil if @posts.count == 0 %>
 </div>

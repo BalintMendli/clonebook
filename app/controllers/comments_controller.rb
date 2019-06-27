@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:success] = 'Comment saved!'
     else
-      p @comment.errors.full_messages
       flash[:danger] = 'Something went wrong...'
     end
     redirect_back(fallback_location: root_path)

@@ -4,5 +4,6 @@
     <% @requests.each do |r| %>
       <%= render 'shared/user', u: r %>
     <% end %>
+    <%= render 'shared/user', u: nil if @requests.count == 0 %>
   </div>
 </div>

@@ -4,5 +4,6 @@
     <% @friends.each do |f| %>
       <%= render 'shared/user', u: f %>
     <% end %>
+    <%= render 'shared/user', u: nil if @friends.count == 0 %>
   </div>
 </div>
