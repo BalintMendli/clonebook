@@ -319,7 +319,8 @@ h2 {
 
 .post-container,
 .users-container,
-.settings-container {
+.settings-container,
+.forgot-container {
   width: 500px;
   margin: 0 auto;
   display: flex;
@@ -889,4 +890,28 @@ h2 {
   border-radius: 3px;
   background: rgba(0, 0, 0, 0.05);
   padding: 5px 15px;
+}
+
+.forgot-container {
+  .actions {
+    input {
+      font-size: 12px;
+      line-height: 22px;
+      padding: 0 16px;
+      height: 28px;
+      margin: 20px 0;
+      cursor: pointer;
+      display: inline-block;
+      background-color: #4267b2;
+      color: #fff;
+      border: 1px solid #4267b2;
+      border-radius: 2px;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #365899;
+        border-color: #365899;
+      }
+    }
+  }
 }
