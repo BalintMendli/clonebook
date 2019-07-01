@@ -1,0 +1,20 @@
+<div class="user-row">
+  <% if u %>
+    <%= gravatar_for u, size: 75 %>
+    <%= link_to u.name, profile_path(u.id) %>
+    <div class="buttons">
+      <% if current_user.friend_request_from?(u) %>
+        <%= link_to 'Confirm', friend_request_path(u), method: :patch, class: 'filled-btn' %> 
+        <%= link_to 'Delete Request', friend_request_path(u), method: :delete, class: 'empty-btn' %>
+      <% elsif current_user.friend_request_to?(u) %>
+        <%= link_to 'Revoke request', friend_request_path(u), method: :delete, class: 'empty-btn' %>
+      <% elsif current_user.friends_with?(u) %>
+        <%= link_to 'Unfriend', friend_request_path(u), method: :delete, class: 'empty-btn' %>
+      <% elsif current_user!=u %>
+        <%= link_to 'Add friend', friend_requests_path(id: u.id), method: :post, class: 'filled-btn' %>
+      <% end %>
+    </div>
+  <% else %>
+    <div>No friends yet...</div>
+  <% end %>
+</div>

@@ -1,0 +1,53 @@
+<% if p %>
+  <div class="post-box">
+    <div class="info">
+      <div class="img">
+        <%= gravatar_for p.user, size: 40 %>
+      </div>
+      <div class="right">
+        <%= link_to p.user.name, profile_path(p.user) %>
+        <div class="created"><%= time_ago_in_words(p.created_at) %></div>
+      </div>
+      <% if p.user_id == current_user.id %>
+        <%= link_to post_path(id: p.id), method: :delete do %>
+          <div class="delete" data-title="Delete post">
+            <i class="fas fa-trash"></i>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="content">
+      <%= p.content %>
+    </div>
+    <div class="likes-comments">
+      <div class="likes">
+        <%= pluralize(p.likes.count, 'Like') %> 
+      </div>
+      <div class="comments">
+        <%= pluralize(p.comments.count, 'Comment') %> 
+      </div>
+    </div>
+    <div class="like-comment">
+        <% if current_user.liked(p) %>
+          <%= link_to like_path(id: current_user.liked(p).id), method: :delete, class: "like" do %>
+            <i class="far fa-thumbs-up"></i>Unlike
+          <% end %>
+        <% else %>
+          <%= link_to likes_path(id: p.id), method: :post, class: "like" do %>
+            <i class="far fa-thumbs-up"></i>Like
+          <% end %>
+        <% end %>
+        <%= link_to "##{p.id}-comment", class: "comment" do %>
+          <i class="far fa-comment-alt"></i>Comment 
+        <% end %>
+    </div>
+  </div>
+  <div class="comment-box">
+    <% p.comments.each do |c| %>
+      <%= render "shared/comment", c: c, p: p %>
+    <% end %>
+    <%= render "comments/new", post_id: p.id %>
+  </div>
+<% else %>
+  <div class="post-box pb">No posts yet...</div>
+<% end %>

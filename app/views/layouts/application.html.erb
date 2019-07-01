@@ -5,15 +5,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato&display=swap', 
+                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css', 
+                            'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <%= render 'shared/header' %>
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% flash.each do |key, value| %>
+        <% unless value.empty? %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
       <% end %>
-    <%= yield %>
+    <div class="container">  
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>

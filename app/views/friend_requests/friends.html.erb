@@ -1,6 +1,9 @@
-<% @friends.each do |f| %>
-  <p>
-    <%= link_to f.name, profile_path(f) %>
-    <%= link_to 'Delete friend', friend_request_path(f), method: :delete %>
-  </p>
-<% end %>
+<div class="users-container">
+  <div class="title">Friends</div>
+  <div class="users">
+    <% @friends.each do |f| %>
+      <%= render 'shared/user', u: f %>
+    <% end %>
+    <%= render 'shared/user', u: nil if @friends.count == 0 %>
+  </div>
+</div>

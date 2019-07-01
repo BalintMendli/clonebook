@@ -1,27 +1,55 @@
-<% if user_signed_in? %>
-  <li>
-    <%= link_to 'Timeline', root_path %>
-  </li>
-  <li>
-    <%= link_to 'Users', users_path %>
-  </li>
-  <li>
-    <%= link_to pluralize(current_user.friends.count, 'Friends'), friends_path %>
-  </li>
-  <li>
-    <%= link_to pluralize(current_user.received_requests_users.count, 'Friend Request'), friend_requests_path %>
-  </li>
-  <li>
-    <%= link_to 'Profile', profile_path(current_user) %>
-  </li>
-  <li>
-    <%= link_to 'Settings', edit_user_registration_path %>
-  </li>
-  <li>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to 'Login', new_user_session_path %>
-  </li>
-<% end %>
+<div class="header">
+  <div class="header-container">
+    <ul>
+    <% if user_signed_in? %>
+      <li class="icon">
+        <%= link_to 'C', root_path %>
+      </li>
+      <li class="profile-link">
+        <%= gravatar_for current_user, size: 24 %>
+        <%= link_to current_user.first_name, profile_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to 'Home', root_path %>
+      </li>
+      <li>
+        <%= link_to 'Users', users_path %>
+      </li>
+      <li>
+        <%= link_to "Friend Requests(#{current_user.received_requests_users.count})", friend_requests_path %>
+      </li>
+      <li>
+        <%= link_to "Friends(#{current_user.friends.count})", friends_path %>
+      </li>
+      <li>
+        <%= link_to 'Settings', edit_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li class="brand-item">
+        <%= link_to 'Clonebook', root_path, class: "brand" %>
+      </li>
+      <li class="sign-in-form">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), namespace: 'signin') do |f| %>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+          </div>
+
+          <div class="action">
+            <%= f.submit "Log in" %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>

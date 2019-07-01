@@ -1,10 +1,8 @@
-<%= form_for :comment, url: comments_path do |f| %>
-  <div class="field">
-    <%= f.label :content, "New comment:" %><br />
-    <%= f.text_area :content, rows: 4 %>
-    <%= f.hidden_field :post_id, value: post_id %>
-  </div>
+<%= form_for :comment, url: comments_path, html: { id: "#{post_id}-comment" } do |f| %>
+  <%= gravatar_for current_user, size: 32 %>
+  <%= f.text_area :content, placeholder: "Write a comment...", required: true %>
+  <%= f.hidden_field :post_id, value: post_id %>
   <div class="action">
-    <%= f.submit "Submit Comment" %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>

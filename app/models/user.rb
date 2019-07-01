@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validate :must_at_least_13
+  validate :must_be_at_least_13
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -60,8 +60,15 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.first_name = auth.info.name
-      user.last_name = auth.info.name
+      name = auth.info.name.strip
+      i = name.index(' ')
+      if i
+        user.first_name = name[0...i]
+        user.last_name = name[i+1..-1]
+      else
+        user.first_name = name
+        user.last_name = name
+      end
     end
   end
 
@@ -75,7 +82,7 @@ class User < ApplicationRecord
 
   private
 
-    def must_at_least_13
+    def must_be_at_least_13
       return if birthday.blank?
       if birthday > 13.years.ago
         errors.add(:base, "Must be at least 13 years old") 
