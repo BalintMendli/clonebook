@@ -45,7 +45,10 @@ gem 'omniauth-facebook', '5.0.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '3.8.2'
+  gem 'factory_bot_rails', '5.0.2'
+  gem 'shoulda-matchers', '4.1.0'
+  gem 'rails-controller-testing', '1.0.2'
 end
 
 group :development do
@@ -59,10 +62,10 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'capybara', '3.22.0'
+  gem 'selenium-webdriver', '3.142.3' 
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '4.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
