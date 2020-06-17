@@ -1,6 +1,6 @@
 # Clonebook
 
-> A facebook clone website built with Ruby on Rails.
+> A Facebook clone website built with Ruby on Rails.
 
 ![clonebook-signup](img/clonebook.png)
 
@@ -8,7 +8,7 @@
 
 - Ruby and Rails
 - SCSS
-- Tests with rspec
+- Tests with RSpec
 - Omniauth authentication
 
 ## Features
@@ -18,13 +18,11 @@
   - Sign-up / login / logout.
   - Show the profile page.
   - Create / update / delete posts.
-  - Have many posts.
 
 - **Posts**
 
   - Create / update / delete.
   - Show in chronological update order.
-  - Belongs to a User.
 
 - **Comments**
 
@@ -38,7 +36,7 @@
   - Send / Accept a friend request.
   - Get notification from friend requests
   - Delete existing friends.
-  - Feed with own and friends' posts only.
+  - Feed with his own and friends' posts only.
 
 ## Data model
 
@@ -56,7 +54,7 @@
 
 ## Getting started
 
-To get started with the app, clone the repo and then install the needed gems:
+To get started with the app, clone the repo, and then install the needed gems:
 
 ```
 $ bundle install --without production
@@ -84,14 +82,14 @@ $ rails server
 
 👤 **Balint Mendli**
 
-- Github: [@zenott](https://github.com/zenott)
+- GitHub: [@zenott](https://github.com/zenott)
 - Website: [mendli.com](https://mendli.com)
 - Email: [balint@mendli.com](mailto:balint@mendli.com)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
-Feel free to check [issues page](https://github.com/zenott/clonebook/issues/).
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://github.com/zenott/clonebook/issues/).
 
 1. Fork it
 2. Create your working branch
